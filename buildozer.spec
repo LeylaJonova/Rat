@@ -1,51 +1,26 @@
 [app]
-
-version = 1.0.0
-
-# Назва, яка буде відображатися на телефоні.
 title = Rat Clicker
-
-#Іконка додатку
 icon.filename = %(source.dir)s/assets/images/icon.png
-
-# Технічне ім'я застосунку: лише малі латинські літери та цифри.
 package.name = ratclicker
-
-# Ідентифікатор пакета для Android.
 package.domain = org.pythonexpert
-
-# Коренева папка проєкту з main.py.
 source.dir = .
-
-# Файли, які необхідно додати до APK.
 source.include_exts = py,kv,png,jpg,jpeg,ogg,mp3,ttf,woff,txt
-
-# Не додаємо службові папки та вихідні файли редактора зображень.
-source.exclude_dirs = .venv,.idea,__pycache__,bin,build
+source.exclude_dirs = .venv,.idea,__pycache__,bin,build,.buildozer
 source.exclude_exts = pyc,pyo,xcf
-
-# Головна залежність застосунку.
-requirements = python3,kivy
-
-# Екран додатка працює тільки вертикально.
+version = 1.0
+# Use the current Android Python runtime.  The application code is compatible
+# with it; charset-normalizer 2.x is pure Python and works on Android.
+requirements = python3,kivy,charset-normalizer==2.1.1
 orientation = portrait
-
-# Повноекранний режим на Android.
 fullscreen = 1
-
-# Версія Android API для збірки.
+# Android build settings.
 android.api = 33
-android.minapi = 23
-
-# Архітектура більшості сучасних Android-пристроїв.
+android.minapi = 24
+android.ndk = 28c
 android.archs = arm64-v8a
-
-# Не копіюємо приватний ключ: Buildozer створить debug-APK.
-
+android.accept_sdk_license = True
+# The develop branch contains current Android compatibility fixes.
+p4a.branch = develop
 [buildozer]
-
-# Рівень деталізації журналу збірки.
 log_level = 2
-
-# Запит на підтвердження, якщо файли збірки потрібно видалити.
 warn_on_root = 1
